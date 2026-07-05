@@ -8,7 +8,7 @@
 			"name": "NixOS Switch: Kyra",
 			"type": "f5anything",
 			"request": "launch",
-			"command": "sudo nixos-rebuild switch --flake .#kyra"
+			"command": "git add .; sudo nixos-rebuild switch --flake .#kyra"
 		}
 	]
 }

@@ -1,10 +1,17 @@
 # Base configuration shared by all desktop hosts
-{ pkgs, lib, inputs, self, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  self,
+  ...
+}:
 
 {
   imports = [
     ../common/configuration.nix
     inputs.home-manager.nixosModules.home-manager
+    ../../modules/nixos/flatpak.nix
   ];
 
   # Graphical environment
@@ -27,22 +34,32 @@
   # Common desktop packages
   environment.systemPackages = with pkgs; [
     kdePackages.kate
-    kdePackages.yakuake 
+    kdePackages.yakuake
   ];
 
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs self; };
-    
-    users = builtins.listToAttrs (map (u: {
-      name = u;
-      value = { imports = [ ../../users/${u}/home-manager/home.nix ]; };
-      }) (builtins.filter
-        (u: builtins.pathExists ../../users/${u}/home-manager/home.nix)
-        (builtins.attrNames (builtins.removeAttrs (builtins.readDir ../../users) [ "default.nix" ]))
-      ));
+
+    users = builtins.listToAttrs (
+      map
+        (u: {
+          name = u;
+          value = {
+            imports = [ ../../users/${u}/home-manager/home.nix ];
+          };
+        })
+        (
+          builtins.filter (u: builtins.pathExists ../../users/${u}/home-manager/home.nix) (
+            builtins.attrNames (builtins.removeAttrs (builtins.readDir ../../users) [ "default.nix" ])
+          )
+        )
+    );
   };
 
   # Browser
   programs.firefox.enable = true;
+
+  # Flatpak
+  services.flatpak.enable = true;
 }

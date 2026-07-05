@@ -2,7 +2,6 @@
 { ... }:
 
 {
-
   imports = [
     # ./apps/firefox.nix
   ];
@@ -13,5 +12,10 @@
     "networkmanager"
     "netbird-default"
     "netbird-dma"
+  ];
+
+  orca.flatpak.apps = [
+    "com.moonlight_stream.Moonlight"
+    "io.github.lullabyX.sone"
   ];
 }

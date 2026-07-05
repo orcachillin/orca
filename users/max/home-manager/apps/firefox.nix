@@ -34,7 +34,7 @@ in
 
   home.file.".mozilla/firefox/${profile}/chrome/overrides.css".text = ''
     :root {
-      --uc-transition: 200ms ease-in-out;
+      --uc-transition: 50ms ease-in-out;
       --uc-mouseout-delay: 50ms !important;
     }
   '';

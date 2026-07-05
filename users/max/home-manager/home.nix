@@ -19,9 +19,10 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./packages.nix
     ./plasma.nix
     ./autostart.nix
-    ./firefox.nix
+    ./apps/firefox.nix
   ];
 
   nixpkgs = {
@@ -54,31 +55,6 @@
     username = "max";
     homeDirectory = "/home/max";
   };
-
-  # Add stuff for your user as you see fit:
-  # programs.neovim.enable = true;
-  home.packages = with pkgs; [
-
-    ## gaming
-
-    steam
-
-    ## work, software stuff
-
-    vscode
-    opencode
-    github-cli
-    nixfmt
-
-    ## messaging
-
-    vesktop
-    telegram-desktop
-    signal-desktop
-
-    ## music
-
-  ];
 
   programs.git = {
     enable = true;

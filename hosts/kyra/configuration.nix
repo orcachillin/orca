@@ -5,6 +5,7 @@
   imports = [
     ./hardware-configuration.nix
     ../../base/desktop/configuration.nix
+    ../../modules/nixos/flatpak.nix
     ../../users
     ../../users/max/desktop.nix
   ];
@@ -29,4 +30,7 @@
   networking.hostName = "kyra";
   time.timeZone = "America/Los_Angeles";
 
+  orca.flatpak.apps = [
+    "org.onlyoffice.desktopeditors"
+  ];
 }
