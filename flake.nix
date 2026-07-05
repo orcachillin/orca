@@ -43,7 +43,7 @@
 
     mkHomeConfig = user: host: home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${self.nixosConfigurations.${host}.config.nixpkgs.system};
-      extraSpecialArgs = {inherit inputs;};
+      extraSpecialArgs = {inherit inputs self;};
       modules = [ ./users/${user}/home-manager/home.nix ];
     };
   in {
@@ -56,7 +56,7 @@
 
     nixosConfigurations = {
       kyra = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs self;};
         modules = [
           ./hosts/kyra/configuration.nix
         ];
