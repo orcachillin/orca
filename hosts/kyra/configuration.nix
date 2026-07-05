@@ -1,5 +1,5 @@
 # Host configuration for kyra
-{ inputs, ... }:
+{ inputs, self, ... }:
 
 {
   imports = [
@@ -11,9 +11,9 @@
 
   nixpkgs = {
     overlays = [
-      inputs.self.overlays.additions
-      inputs.self.overlays.modifications
-      inputs.self.overlays.unstable-packages
+      self.overlays.additions
+      self.overlays.modifications
+      self.overlays.unstable-packages
     ];
   };
 
