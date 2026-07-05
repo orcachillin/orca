@@ -1,5 +1,5 @@
 # Base configuration shared by all desktop hosts
-{ pkgs, lib, inputs, ... }:
+{ pkgs, lib, ... }:
 
 {
 
