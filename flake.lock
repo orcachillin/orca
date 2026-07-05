@@ -1,5 +1,26 @@
 {
   "nodes": {
+    "flake-parts": {
+      "inputs": {
+        "nixpkgs-lib": [
+          "nur",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1733312601,
+        "narHash": "sha256-4pDvzqnegAfRkPwO3wmwBhVi/Sye1mzps0zHWYnP88c=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "205b12d8b7cd4802fbcb8e8ef6a0f1408781a4f9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -53,6 +74,27 @@
         "type": "github"
       }
     },
+    "nur": {
+      "inputs": {
+        "flake-parts": "flake-parts",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1783240028,
+        "narHash": "sha256-xbt0dlUuVIXo6VwfeQIIKhmgI86ti5ZXkuHyGsSbbOk=",
+        "owner": "nix-community",
+        "repo": "NUR",
+        "rev": "2de01c82bbf69aa68b4f99f4e414325bb4a81c1f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "NUR",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -76,12 +118,30 @@
         "type": "github"
       }
     },
+    "potatofox": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1765301642,
+        "narHash": "sha256-WkUJytR6zPmq0vMCMlaEf3J8UM9XkY0IJa2Jn5OrO48=",
+        "ref": "refs/heads/main",
+        "rev": "80e926aeb20f61a927ec0be7a73835d5533227eb",
+        "revCount": 402,
+        "type": "git",
+        "url": "https://codeberg.org/da157/PotatoFox"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://codeberg.org/da157/PotatoFox"
+      }
+    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
-        "plasma-manager": "plasma-manager"
+        "nur": "nur",
+        "plasma-manager": "plasma-manager",
+        "potatofox": "potatofox"
       }
     }
   },

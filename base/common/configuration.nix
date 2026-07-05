@@ -1,8 +1,16 @@
 # Base configuration shared by all desktop hosts
-{ pkgs, lib, inputs, self, ... }:
+{
+  pkgs,
+  lib,
+  inputs,
+  self,
+  config,
+  ...
+}:
 
 {
   imports = [
+    ./services/netbird.nix
   ];
 
   # Bootloader
@@ -12,6 +20,7 @@
 
   # Networking
   networking.networkmanager.enable = true;
+  services.resolved.enable = true;
 
   # Locale (desktops assume en_US, override per-host if needed)
   i18n.defaultLocale = "en_US.UTF-8";
