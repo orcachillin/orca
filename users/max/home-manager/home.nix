@@ -17,6 +17,7 @@
 
     # You can also split up your configuration and import pieces of it here:
     # ./nvim.nix
+    ./plasma.nix
   ];
 
   nixpkgs = {
@@ -42,6 +43,7 @@
       # Disable if you don't want unfree packages
       allowUnfree = true;
     };
+
   };
 
   home = {

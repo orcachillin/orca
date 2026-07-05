@@ -1,47 +1,16 @@
-# Merged system configuration for kyra
+# Base configuration shared by all desktop hosts
+{ pkgs, lib, ... }:
+
 {
-  inputs,
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
-  nixpkgs = {
-    overlays = [
-      inputs.self.overlays.additions
-      inputs.self.overlays.modifications
-      inputs.self.overlays.unstable-packages
-    ];
-    config = {
-      allowUnfree = true;
-    };
-  };
-
-  nix = {
-    settings = {
-      experimental-features = "nix-command flakes";
-      flake-registry = "";
-    };
-    channel.enable = false;
-  };
-
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Networking
-  networking.hostName = "kyra";
   networking.networkmanager.enable = true;
 
-  # Time zone
-  time.timeZone = "America/Los_Angeles";
-
-  # Locale
+  # Locale (desktops assume en_US, override per-host if needed)
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -62,7 +31,7 @@
   # Printing
   services.printing.enable = true;
 
-  # Audio
+  # Audio (pipewire replaces pulseaudio)
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
@@ -71,21 +40,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-
-  # User account
-  users.users = {
-    max = {
-      isNormalUser = true;
-      description = "Maxine Keneau";
-      openssh.authorizedKeys.keys = [
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBHz2/55nxbbtyuPcbJuVV+K/vzjsUHDZyQzxJgho4ee max@orcachill.in"
-      ];
-      extraGroups = [ "wheel" "docker" "networkmanager" ];
-    };
-  };
-
-  # Browser
-  programs.firefox.enable = true;
 
   # SSH
   services.openssh = {
@@ -96,10 +50,16 @@
     };
   };
 
-  # System packages
+  # Common desktop packages
   environment.systemPackages = with pkgs; [
     kdePackages.kate
   ];
+
+  # Allow unfree (firefox, etc.)
+  nixpkgs.config.allowUnfree = true;
+
+  # Browser
+  programs.firefox.enable = true;
 
   system.stateVersion = "25.11";
 }
