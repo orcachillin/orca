@@ -1,7 +1,12 @@
 # Base configuration shared by all desktop hosts
-{ pkgs, lib, ... }:
+{ pkgs, lib, inputs, ... }:
 
 {
+
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
+
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -58,6 +63,15 @@
     btop
     fastfetch
   ];
+
+  # Home Manager
+  home-manager.users = builtins.listToAttrs (map (u: {
+  name = u;
+  value = { imports = [ ../../users/${u}/home-manager/home.nix ]; };
+}) (builtins.filter
+  (u: builtins.pathExists ../../users/${u}/home-manager/home.nix)
+  (builtins.attrNames (builtins.removeAttrs (builtins.readDir ../../users) [ "default.nix" ]))
+));
 
   # Allow unfree (firefox, etc.)
   nixpkgs.config.allowUnfree = true;
