@@ -37,6 +37,10 @@
     kdePackages.yakuake
   ];
 
+  environment.sessionVariables = {
+  XDG_DATA_DIRS = [ "/var/lib/flatpak/exports/share" ];
+};
+
   # Home Manager
   home-manager = {
     extraSpecialArgs = { inherit inputs self; };
