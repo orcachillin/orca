@@ -4,9 +4,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../../base/desktop/configuration.nix
-    ../../../users
-    ../../../users/max/desktop.nix
+    ../../base/desktop/configuration.nix
+    ../../users
+    ../../users/max/desktop.nix
   ];
 
   nixpkgs = {
