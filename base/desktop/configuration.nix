@@ -74,7 +74,7 @@
         (u: builtins.pathExists ../../users/${u}/home-manager/home.nix)
         (builtins.attrNames (builtins.removeAttrs (builtins.readDir ../../users) [ "default.nix" ]))
       ));
-  }
+  };
 
   # Allow unfree (firefox, etc.)
   nixpkgs.config.allowUnfree = true;
