@@ -3,7 +3,7 @@
 
 {
   imports = [
-    "../common/configuration.nix"
+    ../common/configuration.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
