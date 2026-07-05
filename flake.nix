@@ -58,7 +58,7 @@
       kyra = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          ./hosts/kyra/nixos/configuration.nix
+          ./hosts/kyra/configuration.nix
         ];
       };
     };
