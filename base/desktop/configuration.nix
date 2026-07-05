@@ -53,6 +53,10 @@
   # Common desktop packages
   environment.systemPackages = with pkgs; [
     kdePackages.kate
+    git
+    nnn
+    btop
+    fastfetch
   ];
 
   # Allow unfree (firefox, etc.)
