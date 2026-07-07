@@ -19,11 +19,11 @@
     opencode
     github-cli
     nixfmt
-    (inputs.kilo.packages.${pkgs.system}.kilo.overrideAttrs (oldAttrs: {
-      postConfigure = (oldAttrs.postConfigure or "") + ''
-        sed -i -e 's/if (!semver.satisfies(process.versions.bun, expectedBunVersionRange)) {/if (false) {/' packages/script/src/index.ts
-      '';
-    }))
+    # (inputs.kilo.packages.${pkgs.system}.kilo.overrideAttrs (oldAttrs: {
+    #   postConfigure = (oldAttrs.postConfigure or "") + ''
+    #     sed -i -e 's/if (!semver.satisfies(process.versions.bun, expectedBunVersionRange)) {/if (false) {/' packages/script/src/index.ts
+    #   '';
+    # }))
 
     ## messaging
 
