@@ -28,6 +28,11 @@
       url = "git+https://codeberg.org/da157/PotatoFox";
       flake = false;
     };
+
+    # Kilo
+    kilo = {
+      url = "github:Kilo-Org/kilocode";
+    };
   };
 
   outputs = {

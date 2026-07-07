@@ -2,9 +2,10 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
 
-# Add stuff for your user as you see fit:
+  # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [
 
@@ -18,6 +19,8 @@
     opencode
     github-cli
     nixfmt
+    bun
+    inputs.kilo.packages.${pkgs.system}.kilo
 
     ## messaging
 
@@ -25,6 +28,6 @@
     telegram-desktop
     signal-desktop
 
-    ## music  
+    ## music
   ];
 }

@@ -45,12 +45,19 @@
     };
   };
 
+  virtualisation.docker = {
+    enable = true;
+  };
+
   # Common desktop packages
   environment.systemPackages = with pkgs; [
     git
     nnn
     btop
     fastfetch
+    nodejs
+    typescript
+    typescript-go
   ];
 
   # Allow unfree (firefox, etc.)

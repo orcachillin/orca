@@ -2,5 +2,5 @@
 { ... }:
 
 {
-  users.users.max.extraGroups = [ "wheel" "docker" ];
+  # users.users.max.extraGroups = [ "wheel" "docker" ];
 }

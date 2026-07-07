@@ -9,5 +9,13 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBHz2/55nxbbtyuPcbJuVV+K/vzjsUHDZyQzxJgho4ee max@orcachill.in"
     ];
+
+    extraGroups = [
+    "wheel"
+    "docker"
+    "networkmanager"
+    "netbird-default"
+    "netbird-dma"
+    ];
   }; 
 }
